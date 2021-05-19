@@ -28,7 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E52B978CB84DF51FC3901C2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		1E52B978CB84DF51FC3901C2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		27EC6E7C288A6FDE2A799C1D /* Pods-DnpLog_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnpLog_Tests.release.xcconfig"; path = "Target Support Files/Pods-DnpLog_Tests/Pods-DnpLog_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2DD4CFA8EEE89625CC464707 /* Pods_DnpLog_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnpLog_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* DnpLog_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DnpLog_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,8 +43,8 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		70F8786484322DC5DFA7B09B /* Pods-DnpLog_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnpLog_Example.release.xcconfig"; path = "Target Support Files/Pods-DnpLog_Example/Pods-DnpLog_Example.release.xcconfig"; sourceTree = "<group>"; };
 		926B24C5A64CD8914883EA9F /* Pods-DnpLog_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnpLog_Tests.debug.xcconfig"; path = "Target Support Files/Pods-DnpLog_Tests/Pods-DnpLog_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		93573A6B04977E386ABAD8AE /* DnpLog.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = DnpLog.podspec; path = ../DnpLog.podspec; sourceTree = "<group>"; };
-		B7F3692B61D3043A2880F93D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		93573A6B04977E386ABAD8AE /* DnpLog.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DnpLog.podspec; path = ../DnpLog.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B7F3692B61D3043A2880F93D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		DB9BB06A0E81B154BDA55405 /* Pods_DnpLog_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnpLog_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6DA5E7EB37206BF1E3C753 /* Pods-DnpLog_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnpLog_Example.debug.xcconfig"; path = "Target Support Files/Pods-DnpLog_Example/Pods-DnpLog_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,7 +156,6 @@
 				926B24C5A64CD8914883EA9F /* Pods-DnpLog_Tests.debug.xcconfig */,
 				27EC6E7C288A6FDE2A799C1D /* Pods-DnpLog_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

@@ -1,0 +1,6 @@
+framework module DnpLog {
+  umbrella header "DnpLog-umbrella.h"
+
+  export *
+  module * { export * }
+}

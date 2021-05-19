@@ -1,0 +1,16 @@
+PODS:
+  - DnpLog (0.1.0)
+
+DEPENDENCIES:
+  - DnpLog (from `../`)
+
+EXTERNAL SOURCES:
+  DnpLog:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DnpLog: dd3c29db6a8d038d9dc06d4fe336b70dc5b89af9
+
+PODFILE CHECKSUM: 65fb6b4b26beee33f85eddf82c1601e08fff6cf1
+
+COCOAPODS: 1.10.0
