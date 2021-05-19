@@ -10,4 +10,12 @@ import Foundation
 
 public class DnpLogManager: NSObject {
 
+    public static func startMonitor() {
+        //URLProtocol.registerClass(DnpURLProtocol.self)
+    }
+    
+    public static func stopMonitor() {
+        URLProtocol.unregisterClass(DnpURLProtocol.self)
+    }
+    
 }

@@ -1,10 +1,14 @@
 use_frameworks!
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://gitee.com/eyeesource/DNSpecs.git'
 
 platform :ios, '9.0'
 
 target 'DnpLog_Example' do
   pod 'DnpLog', :path => '../'
 
+  pod 'ZLNetworkComponent'
+  
   target 'DnpLog_Tests' do
     inherit! :search_paths
 

@@ -1,16 +1,42 @@
 PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
   - DnpLog (0.1.0)
+  - ZLNetworkComponent (1.1.1):
+    - AFNetworking (= 3.2.1)
 
 DEPENDENCIES:
   - DnpLog (from `../`)
+  - ZLNetworkComponent
+
+SPEC REPOS:
+  https://gitee.com/eyeesource/DNSpecs.git:
+    - ZLNetworkComponent
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
 
 EXTERNAL SOURCES:
   DnpLog:
     :path: "../"
 
 SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   DnpLog: dd3c29db6a8d038d9dc06d4fe336b70dc5b89af9
+  ZLNetworkComponent: cdc28a36b28229e33b777a878d04d8b2c32892ef
 
-PODFILE CHECKSUM: 65fb6b4b26beee33f85eddf82c1601e08fff6cf1
+PODFILE CHECKSUM: e450eb887b8fd19b562e2b7469c7479e0d7ef7e8
 
 COCOAPODS: 1.10.0
