@@ -8,12 +8,10 @@
 import Foundation
 
 
-class DnpURLProtocol: URLProtocol {
-    private var session : URLSession?
-    var sessionTask: URLSessionTask?
-}
-
-extension DnpURLProtocol {
+class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegate {
+    
+    fileprivate var session : URLSession?
+    fileprivate var dataTask:URLSessionDataTask?
 
     override class func canInit(with request: URLRequest) -> Bool {
         if let _ = URLProtocol.property(forKey: "DnpURLProtocol", in: request) {
@@ -49,7 +47,6 @@ extension DnpURLProtocol {
                 cookieValue.append(appendString)
             }
         }
-        //print("request: \(mutableRequest) Cookie: \(cookieValue)")
         mutableRequest.addValue(cookieValue, forHTTPHeaderField: "Cookie")
         return mutableRequest.copy() as! URLRequest
     }
@@ -58,22 +55,17 @@ extension DnpURLProtocol {
         let config = URLSessionConfiguration.default
         config.protocolClasses = [type(of: self)]
         session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
-        sessionTask = self.session?.dataTask(with: self.request)
+        dataTask = self.session?.dataTask(with: self.request)
         
-        sessionTask?.resume()
-        if let m_task = sessionTask {
-            DnpDataManager.shared.addRequest(task: m_task as! URLSessionDataTask)
-        }
+        dataTask?.resume()
+        DnpDataManager.shared.addRequest(task: dataTask)
     }
 
     override func stopLoading() {
-        self.session?.invalidateAndCancel()
-        self.session = nil
+        self.dataTask?.cancel()
+        self.dataTask = nil
     }
-}
-
-extension DnpURLProtocol : URLSessionDataDelegate {
-
+    
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let e = error {
             self.client?.urlProtocol(self, didFailWithError: e)
@@ -99,7 +91,7 @@ extension DnpURLProtocol : URLSessionDataDelegate {
 
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
 
-        let model = DnpDataManager.shared.mutable_requests_dict[dataTask]
+        let model = DnpDataManager.shared.requests_dict[dataTask]
         var newData = NSMutableData(data: data)
         if let origindata = model?.originalData {
             newData = NSMutableData(data: origindata)
@@ -107,20 +99,12 @@ extension DnpURLProtocol : URLSessionDataDelegate {
         }
         model?.originalData = newData as Data
         
-        
-        let m_url = "\(dataTask.originalRequest?.url?.path ?? "")"
-        print("--\(m_url)")
-        
-        let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? ""
-        let response = "{\n\(string)\n}"
-        print(response)
-        
         self.client?.urlProtocol(self, didLoad: data)
-
+        
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
         client?.urlProtocol(self, wasRedirectedTo: request, redirectResponse: response)
     }
-
+    
 }

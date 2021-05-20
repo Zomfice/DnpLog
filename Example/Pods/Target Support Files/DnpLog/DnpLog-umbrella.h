@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "DnpLoadMethods.h"
 
 FOUNDATION_EXPORT double DnpLogVersionNumber;
 FOUNDATION_EXPORT const unsigned char DnpLogVersionString[];

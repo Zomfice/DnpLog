@@ -7,7 +7,7 @@
 
 import Foundation
 
-let DnpLogNotification = NSNotification.Name(rawValue: "DnpLogNotificationName")
+let DnpLogNotificationName = NSNotification.Name(rawValue: "DnpLogNotificationName")
 
 extension String{
     static func jsonToString(dic : [String: Any]?) -> String{

@@ -12,32 +12,29 @@ class DnpDataManager: NSObject {
     
     static let shared = DnpDataManager()
     
-    var mutable_requests: [DnpDataModel] = []
+    var requests: [DnpDataModel] = []
     
-    var mutable_requests_dict = [URLSessionDataTask: DnpDataModel]()
+    var requests_dict = [URLSessionDataTask: DnpDataModel]()
     
-    func addRequest(task: URLSessionDataTask)  {
+    func addRequest(task: URLSessionDataTask?)  {
+        guard let dataTask = task else {
+            return
+        }
         
         objc_sync_enter(self)
-        
-        if self.mutable_requests.count > 100 , let task = self.mutable_requests.first?.task{
-            self.mutable_requests.removeFirst()
-            self.mutable_requests_dict.removeValue(forKey: task)
+        if self.requests.count > 100 , let task = self.requests.first?.task{
+            self.requests.removeFirst()
+            self.requests_dict.removeValue(forKey: task)
         }
         
         let model = DnpDataModel()
-        model.task = task
+        model.task = dataTask
         model.time = Date.timeInterval()
         
-        self.mutable_requests.append(model)
-        self.mutable_requests_dict[task] = model
+        self.requests.append(model)
+        self.requests_dict[dataTask] = model
         
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            print("-----log---\(model.logDataFormat())")
-        }
-        
-        NotificationCenter.default.post(name: DnpLogNotification, object: model)
+        NotificationCenter.default.post(name: DnpLogNotificationName, object: model)
         objc_sync_exit(self)
     }
     
