@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EC397212654C981007989EA /* Persong.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC397202654C981007989EA /* Persong.m */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -30,8 +29,6 @@
 
 /* Begin PBXFileReference section */
 		0EC3971E2654C980007989EA /* DnpLog_Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DnpLog_Example-Bridging-Header.h"; sourceTree = "<group>"; };
-		0EC3971F2654C981007989EA /* Persong.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Persong.h; sourceTree = "<group>"; };
-		0EC397202654C981007989EA /* Persong.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Persong.m; sourceTree = "<group>"; };
 		1E52B978CB84DF51FC3901C2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		27EC6E7C288A6FDE2A799C1D /* Pods-DnpLog_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnpLog_Tests.release.xcconfig"; path = "Target Support Files/Pods-DnpLog_Tests/Pods-DnpLog_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2DD4CFA8EEE89625CC464707 /* Pods_DnpLog_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DnpLog_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,8 +105,6 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				0EC3971F2654C981007989EA /* Persong.h */,
-				0EC397202654C981007989EA /* Persong.m */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -342,7 +337,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EC397212654C981007989EA /* Persong.m in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

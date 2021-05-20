@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "NSURLSessionConfiguration+XX.h"
 #import "DnpLoadMethods.h"
 
 FOUNDATION_EXPORT double DnpLogVersionNumber;

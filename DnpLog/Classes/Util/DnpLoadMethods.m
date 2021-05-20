@@ -12,8 +12,8 @@
 @implementation DnpLoadMethods
 
 + (void)load{
-    NSLog(@"--Load--%s",__func__);
-    [NSURLSessionConfiguration initLoad];
+    //NSLog(@"--Load--%s",__func__);
+    //[NSURLSessionConfiguration initLoad];
     //[DnpURLProtocol initLoad];
 }
 

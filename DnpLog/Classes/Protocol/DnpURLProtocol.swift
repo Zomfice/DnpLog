@@ -8,37 +8,33 @@
 import Foundation
 
 
-@objc public class DnpURLProtocol: URLProtocol {
-    static let hasInitKey = "DnpMarkerProtocolKey"
+class DnpURLProtocol: URLProtocol {
     private var session : URLSession?
-    
+    var sessionTask: URLSessionTask?
 }
 
 extension DnpURLProtocol {
-    
-    public override class func canInit(with request: URLRequest) -> Bool {
-        
-        if let value = URLProtocol.property(forKey: hasInitKey, in: request) as? Bool, value {
+
+    override class func canInit(with request: URLRequest) -> Bool {
+        if let _ = URLProtocol.property(forKey: "DnpURLProtocol", in: request) {
             return false
         }
-        
+
         if request.url?.scheme != "http" ,request.url?.scheme != "https" {
             return false
         }
-        
         let contentType = request.value(forHTTPHeaderField: "Content-Type")
-        
         if let contentTypeStr = contentType, (contentTypeStr as NSString).contains("multipart/form-data")  {
             return false
         }
         return true
     }
-    
-    public override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+
+    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else {
             return request
         }
-        URLProtocol.setProperty(true, forKey: hasInitKey, in: mutableRequest)
+        URLProtocol.setProperty("YES", forKey: "DnpURLProtocol", in: mutableRequest)
         var cookieDic = [String: Any]()
         var cookieValue = String()
         let cookieJar = HTTPCookieStorage.shared
@@ -53,60 +49,56 @@ extension DnpURLProtocol {
                 cookieValue.append(appendString)
             }
         }
-        print("request: \(mutableRequest) Cookie: \(cookieValue)")
-        //mutableRequest.addValue(cookieValue, forHTTPHeaderField: "Cookie")
-        return mutableRequest as URLRequest
+        //print("request: \(mutableRequest) Cookie: \(cookieValue)")
+        mutableRequest.addValue(cookieValue, forHTTPHeaderField: "Cookie")
+        return mutableRequest.copy() as! URLRequest
     }
-    
-    public override func startLoading() {
-        guard let mutableRequest = (request as NSURLRequest).mutableCopy() as? NSMutableURLRequest else {
-            return
+
+    override func startLoading() {
+        let config = URLSessionConfiguration.default
+        config.protocolClasses = [type(of: self)]
+        session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        sessionTask = self.session?.dataTask(with: self.request)
+        
+        sessionTask?.resume()
+        if let m_task = sessionTask {
+            DnpDataManager.shared.addRequest(task: m_task as! URLSessionDataTask)
         }
-        print("-----开始请求-------\(mutableRequest.url)")
-        let configuration = URLSessionConfiguration.ephemeral
-        self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue())
-        let task = self.session?.dataTask(with: self.request)
-        task?.resume()
-        // 添加task
-        if let m_task = task {
-            DnpDataManager.shared.addRequest(task: m_task)
-        }
-        // 打印数据
     }
-    
-    public override func stopLoading() {
+
+    override func stopLoading() {
         self.session?.invalidateAndCancel()
         self.session = nil
     }
 }
 
 extension DnpURLProtocol : URLSessionDataDelegate {
-    
-    private func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let e = error {
             self.client?.urlProtocol(self, didFailWithError: e)
         }else{
             self.client?.urlProtocolDidFinishLoading(self)
         }
     }
-    
-    private func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
-//        if response.isKind(of: HTTPURLResponse.self),
-//           let response = response as? HTTPURLResponse,
-//           let allHeaderFields = response.allHeaderFields as? [String: String],
-//           let _ = allHeaderFields["Set-Cookie"] ,
-//           let url = response.url{
-//            let cookies = HTTPCookie.cookies(withResponseHeaderFields: allHeaderFields, for: url)
-//            for cookie in cookies {
-//                HTTPCookieStorage.shared.setCookie(cookie)
-//            }
-//        }
+
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+        if response.isKind(of: HTTPURLResponse.self),
+           let response = response as? HTTPURLResponse,
+           let allHeaderFields = response.allHeaderFields as? [String: String],
+           let _ = allHeaderFields["Set-Cookie"] ,
+           let url = response.url{
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: allHeaderFields, for: url)
+            for cookie in cookies {
+                HTTPCookieStorage.shared.setCookie(cookie)
+            }
+        }
         self.client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
-        completionHandler(URLSession.ResponseDisposition.allow)
+        completionHandler(.allow)
     }
-    
-    private func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        
+
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+
         let model = DnpDataManager.shared.mutable_requests_dict[dataTask]
         var newData = NSMutableData(data: data)
         if let origindata = model?.originalData {
@@ -115,12 +107,20 @@ extension DnpURLProtocol : URLSessionDataDelegate {
         }
         model?.originalData = newData as Data
         
+        
+        let m_url = "\(dataTask.originalRequest?.url?.path ?? "")"
+        print("--\(m_url)")
+        
+        let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) ?? ""
+        let response = "{\n\(string)\n}"
+        print(response)
+        
         self.client?.urlProtocol(self, didLoad: data)
-        
+
     }
     
-    private func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+        client?.urlProtocol(self, wasRedirectedTo: request, redirectResponse: response)
     }
-    
+
 }

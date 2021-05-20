@@ -22,12 +22,13 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.request2()
+        self.request()
     }
+    
     
     func request() {
         let config = ZLNetConfig()
-        config.isNeedLog = true
+        config.isNeedLog = false
         config.isNeedDomainName = false
         config.isNeedServiceResponse = false
         let path = "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest"
