@@ -45,9 +45,9 @@ import UIKit
     
     /// init Log notification
     internal func initconfig() {
-//        if UserDefaults.standard.bool(forKey: "\(DnpToolLogController.self)") {
-//            DnpLogListController.addnotification()
-//        }
+        //if UserDefaults.standard.bool(forKey: "\(DnpToolLogController.self)") {
+        //    DnpLogListController.addnotification()
+        //}
     }
     
     /// whether show DnpLog

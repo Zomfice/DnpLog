@@ -15,24 +15,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        
-        //let bytesArray = UnsafeBufferPointer(start: bts, count: bytes.count).map{$0}
-        //self.request()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.request()
+        self.request(path: "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest")
+        self.request(path: "http://meizi.leanapp.cn/category/All/page/1")
+        self.request(path: "https://www.baidu.com/")
+        self.netForURLConnection()
     }
     
+    func netForURLConnection() {
+        let url: URL = URL(string: "https://www.taobao.com/")!
+        let request: URLRequest = URLRequest(url: url)
+        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue()) { (response:URLResponse?, data:Data?, error:Error?) in
+            if error == nil {
+                let result: String = String(data: data!, encoding: String.Encoding.utf8)!
+                //print("请求成功 = \(result)")
+            }else{
+                print("请求失败 error = \(error.debugDescription)")
+            }
+        }
+    }
     
-    func request() {
+    func request(path: String) {
         let config = ZLNetConfig()
         config.isNeedLog = false
         config.isNeedDomainName = false
         config.isNeedServiceResponse = false
         //let path = "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest"
-        let path = "http://meizi.leanapp.cn/category/All/page/1"
+        // let path = "http://meizi.leanapp.cn/category/All/page/1"
         ZLNetWork.request(requestType: .get, path: path, parameters: nil, netConfig: config
         , progressBlock: nil, dataTaskBlock: nil, serviceResponse: nil) { (response, error) in
             if let _ = response{
@@ -52,7 +63,7 @@ class ViewController: UIViewController {
         let urlpath = "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest"
         session.get(urlpath, parameters: nil, progress: nil) { (task, response) in
             if let dict = response as? [String: Any] {
-                print(dict)
+                //print(dict)
             }else{
                 print("无")
             }

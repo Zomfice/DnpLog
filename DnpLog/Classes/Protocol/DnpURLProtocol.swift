@@ -14,6 +14,7 @@ class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegat
     fileprivate var dataTask:URLSessionDataTask?
 
     override class func canInit(with request: URLRequest) -> Bool {
+        
         if let _ = URLProtocol.property(forKey: "DnpURLProtocol", in: request) {
             return false
         }
@@ -22,10 +23,13 @@ class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegat
             return false
         }
         
-        
-        
         let contentType = request.value(forHTTPHeaderField: "Content-Type")
         if let contentTypeStr = contentType, (contentTypeStr as NSString).contains("multipart/form-data")  {
+            return false
+        }
+        
+        // 域名过滤
+        guard DnpLogManager.interceptorDomainFilter(request: request) else {
             return false
         }
         return true

@@ -99,7 +99,11 @@ extension DnpLogDataModel {
     func originalResponse() -> String {
         var p_response = "{\n\n}"
         if let originData = self.originalData{
-            p_response = "\(originData.dataToString())"
+            if originData.dataToString().count > 0 {
+                p_response = originData.dataToString()
+            }else if let string = String(data: originData, encoding: .utf8){
+                p_response = "{\n\(string)\n}"
+            }
         }
         return p_response
     }

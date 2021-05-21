@@ -14,7 +14,6 @@
 		0E8C486626575C150000E8BC /* DnpLogListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C486526575C150000E8BC /* DnpLogListController.swift */; };
 		0E8C486F26575C270000E8BC /* DnpLogDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C486E26575C270000E8BC /* DnpLogDetailController.swift */; };
 		0E8C487F26575C440000E8BC /* DnpLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8C487E26575C440000E8BC /* DnpLogCell.swift */; };
-		11FF99E9BEEB6FFDAC86760C0A054DF4 /* NetworkRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87CF231452E0B0B6A5197F65F9C42D /* NetworkRequestInterceptor.swift */; };
 		169B3FC2BD33B8FBC2D4C35A1C1DC6BF /* AFHTTPSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AD13F663DABCDEF424C26B79392AC6E /* AFHTTPSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17D6A066C5F987FEFF8B89D7EFDFD375 /* AFURLRequestSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = D99F808F55B15D78D35A39CCBA4E56A1 /* AFURLRequestSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E9C342FA6E40452216B68C0E4CA4A78 /* Pods-DnpLog_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 209AF26E5658A37190ACE080A4448E95 /* Pods-DnpLog_Tests-dummy.m */; };
@@ -60,7 +59,6 @@
 		99486D27FE8B426AE686B294CDF58531 /* ZLNetworkComponent.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B7C8E1C39A634DC3537CD3A13519EDA8 /* ZLNetworkComponent.bundle */; };
 		9AFFB2CFE22FCB06F9B1F8D5B1E58E10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88DB0FF42E2704AC380E13111F6710E /* Foundation.framework */; };
 		9B41316D2DE09092FA0143B33A74B769 /* UIKit+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 28E1E301CEC4D040EB10118DF323C963 /* UIKit+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C9275E687B284B31201036304E288E6 /* TBURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9695C338618BCEB61EA0BE7D1EB643 /* TBURLProtocol.swift */; };
 		9D85430F2A41AFDB2AA4EA7BCFC977FE /* dnptool_enter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFC4AF0F6BB4A1ED6EC8D292B945096 /* dnptool_enter@2x.png */; };
 		A49BA8559B83BC942ECE7B532B7CBC2C /* DnpLog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 035E19EF10AD0BE7F7EAC6EA1A9BA820 /* DnpLog.bundle */; };
 		A5D86CC71480778ECD0EE81138D48C91 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B587A52A6D10A7D585470C7A0FFAB3AD /* AFURLResponseSerialization.m */; };
@@ -74,7 +72,6 @@
 		BA1055EACE2EC3E408B6E2C99246F0FC /* DnpURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B2D91BAA5FAB892B1F0EFC7B865635 /* DnpURLProtocol.swift */; };
 		CDE00F119FC7A34CA946BE5F1240BA7D /* server3.cer in Resources */ = {isa = PBXBuildFile; fileRef = A87294083871D6981F47C7575640AF4F /* server3.cer */; };
 		CFBD8E0A43B21AA3F1953AE36B56B220 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88DB0FF42E2704AC380E13111F6710E /* Foundation.framework */; };
-		D04B07168A92ACEF80715F82B89A094F /* NetworkRedirectUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7E2B22078ED65E16F77B88D00EA99C /* NetworkRedirectUrlProtocol.swift */; };
 		D29F2AD07AF58334781F008905C30C35 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FFD55DDE3B7DB3FA324635BE106695 /* UIRefreshControl+AFNetworking.m */; };
 		D37C00F936815E8748078F0DD2E54A0E /* ZLNetConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BBEF18E21C11AB1759F2BC50EE3CEA /* ZLNetConfig.swift */; };
 		D59E2A517A48D101120EB57F90F140A5 /* AFURLSessionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 56FBB9345F53094E98B64859B0B9C500 /* AFURLSessionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -150,7 +147,6 @@
 		00FDA383094F4221E905FA261910D3C9 /* Pods-DnpLog_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DnpLog_Tests-Info.plist"; sourceTree = "<group>"; };
 		035E19EF10AD0BE7F7EAC6EA1A9BA820 /* DnpLog.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DnpLog.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		084863DCFED4BF86DADF65C36E1FE5FD /* DnpSessionConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DnpSessionConfiguration.swift; sourceTree = "<group>"; };
-		0B7E2B22078ED65E16F77B88D00EA99C /* NetworkRedirectUrlProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkRedirectUrlProtocol.swift; sourceTree = "<group>"; };
 		0BB1B26F444DB97AE6FBD7CC779930D0 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		0BB7B09059B9C91E445B3BCA7A47F26E /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		0C0BA9BCF67367682E9034C2E91E1E7A /* AFNetworking-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "AFNetworking-Info.plist"; sourceTree = "<group>"; };
@@ -246,9 +242,7 @@
 		C473EEFF2FBA89A6F972EE10311A7448 /* DnpLog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DnpLog.release.xcconfig; sourceTree = "<group>"; };
 		C4CA4C790A46664C3BBEC58920842F6E /* Pods-DnpLog_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DnpLog_Example-frameworks.sh"; sourceTree = "<group>"; };
 		C4E642AF377240955D885C53BA2FFC1E /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
-		CC9695C338618BCEB61EA0BE7D1EB643 /* TBURLProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TBURLProtocol.swift; sourceTree = "<group>"; };
 		CCCC257BBBEDD2B121672B1904C494DD /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFCompatibilityMacros.h; path = AFNetworking/AFCompatibilityMacros.h; sourceTree = "<group>"; };
-		CE87CF231452E0B0B6A5197F65F9C42D /* NetworkRequestInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NetworkRequestInterceptor.swift; sourceTree = "<group>"; };
 		D238E4D7DF3D93433294FA722C6B5C97 /* DnpTool.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DnpTool.swift; sourceTree = "<group>"; };
 		D3BA6E78CD3D452EE369916876264C2A /* Pods-DnpLog_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DnpLog_Example.release.xcconfig"; sourceTree = "<group>"; };
 		D622DFF38326CEFEB68AD95B8E2EA2FF /* ZLNetworkComponent.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ZLNetworkComponent.modulemap; sourceTree = "<group>"; };
@@ -412,9 +406,6 @@
 				1CD32893EF289F3F78E15D32C65EB9B4 /* DnpLogManager.swift */,
 				084863DCFED4BF86DADF65C36E1FE5FD /* DnpSessionConfiguration.swift */,
 				97B2D91BAA5FAB892B1F0EFC7B865635 /* DnpURLProtocol.swift */,
-				0B7E2B22078ED65E16F77B88D00EA99C /* NetworkRedirectUrlProtocol.swift */,
-				CE87CF231452E0B0B6A5197F65F9C42D /* NetworkRequestInterceptor.swift */,
-				CC9695C338618BCEB61EA0BE7D1EB643 /* TBURLProtocol.swift */,
 			);
 			name = Protocol;
 			path = DnpLog/Classes/Protocol;
@@ -1020,9 +1011,6 @@
 				0E8C486F26575C270000E8BC /* DnpLogDetailController.swift in Sources */,
 				0E8C487F26575C440000E8BC /* DnpLogCell.swift in Sources */,
 				70E2D3824A4E6B3D7FFBE1246153C676 /* DnpVisualWindow.swift in Sources */,
-				D04B07168A92ACEF80715F82B89A094F /* NetworkRedirectUrlProtocol.swift in Sources */,
-				11FF99E9BEEB6FFDAC86760C0A054DF4 /* NetworkRequestInterceptor.swift in Sources */,
-				9C9275E687B284B31201036304E288E6 /* TBURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

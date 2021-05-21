@@ -21,6 +21,7 @@ class DnpSessionConfiguration: NSObject {
         isSwizzle = true
         URLProtocol.registerClass(DnpURLProtocol.self)
         swizzleSelector()
+        interceptWebview()
     }
     
     func unload(){
@@ -40,7 +41,21 @@ class DnpSessionConfiguration: NSObject {
     }
     
     @objc func protocolClasses() -> NSArray{
-        return [TBURLProtocol.self]
+        return [DnpURLProtocol.self]
+    }
+    
+    func interceptWebview() {
+        //实现WKWebview拦截功能
+        /*
+        guard let object = NSClassFromString("WKBrowsingContextController") else {
+            return
+        }
+        let cls = object as AnyObject
+        let sel = NSSelectorFromString("registerSchemeForCustomProtocol:")
+        if cls.responds(to: sel) {
+            let _ = cls.perform(sel, with: "http")
+            let _ = cls.perform(sel, with: "https")
+        }*/
     }
 }
 
