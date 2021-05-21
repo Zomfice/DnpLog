@@ -25,7 +25,7 @@ class DnpToolEnterView: UIWindow {
         self.backgroundColor = UIColor.clear
         
         
-        self.windowLevel = UIWindowLevelAlert + 100.0
+        self.windowLevel = UIWindow.Level.alert + 100.0
         let version = UIDevice.current.systemVersion as NSString
         if version.doubleValue >= 10.0{
             if self.rootViewController == nil{

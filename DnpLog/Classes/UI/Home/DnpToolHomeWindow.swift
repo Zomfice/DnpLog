@@ -21,7 +21,7 @@ class DnpToolHomeWindow: UIWindow {
             super.init(frame: frame)
         }
         
-        self.windowLevel = UIWindowLevelStatusBar + 50.0
+        self.windowLevel = UIWindow.Level.statusBar + 50.0
         self.backgroundColor = UIColor.clear
         self.isHidden = true
     }
@@ -62,9 +62,11 @@ class DnpToolHomeWindow: UIWindow {
     
     
     internal func openModule() {
+        UserDefaults.standard.setValue(true, forKey: DnpOpenLogModule)
+        UserDefaults.standard.synchronize()
         if UserDefaults.standard.bool(forKey: DnpOpenLogModule) {
-            //let logvc = DnpLogListController()
-            //self.homeVc?.navigationController?.pushViewController(logvc, animated: false)
+            let logvc = DnpLogListController()
+            self.homeVc?.navigationController?.pushViewController(logvc, animated: false)
         }
     }
     

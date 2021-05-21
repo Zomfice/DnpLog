@@ -21,6 +21,9 @@ class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegat
         if request.url?.scheme != "http" ,request.url?.scheme != "https" {
             return false
         }
+        
+        
+        
         let contentType = request.value(forHTTPHeaderField: "Content-Type")
         if let contentTypeStr = contentType, (contentTypeStr as NSString).contains("multipart/form-data")  {
             return false
@@ -58,7 +61,7 @@ class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegat
         dataTask = self.session?.dataTask(with: self.request)
         
         dataTask?.resume()
-        DnpDataManager.shared.addRequest(task: dataTask)
+        DnpLogDataManager.shared.addRequest(task: dataTask)
     }
 
     override func stopLoading() {
@@ -91,7 +94,7 @@ class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegat
 
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
 
-        let model = DnpDataManager.shared.requests_dict[dataTask]
+        let model = DnpLogDataManager.shared.requests_dict[dataTask]
         var newData = NSMutableData(data: data)
         if let origindata = model?.originalData {
             newData = NSMutableData(data: origindata)

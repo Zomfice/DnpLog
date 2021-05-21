@@ -8,13 +8,13 @@
 import Foundation
 
 
-class DnpDataManager: NSObject {
+class DnpLogDataManager: NSObject {
     
-    static let shared = DnpDataManager()
+    static let shared = DnpLogDataManager()
     
-    var requests: [DnpDataModel] = []
+    var requests: [DnpLogDataModel] = []
     
-    var requests_dict = [URLSessionDataTask: DnpDataModel]()
+    var requests_dict = [URLSessionDataTask: DnpLogDataModel]()
     
     func addRequest(task: URLSessionDataTask?)  {
         guard let dataTask = task else {
@@ -27,7 +27,7 @@ class DnpDataManager: NSObject {
             self.requests_dict.removeValue(forKey: task)
         }
         
-        let model = DnpDataModel()
+        let model = DnpLogDataModel()
         model.task = dataTask
         model.time = Date.timeInterval()
         
@@ -38,4 +38,10 @@ class DnpDataManager: NSObject {
         objc_sync_exit(self)
     }
     
+    
+    static func removeAll() {
+        shared.requests.removeAll()
+        shared.requests_dict.removeAll()
+        NotificationCenter.default.post(name: DnpLogNotificationName, object: nil)
+    }
 }

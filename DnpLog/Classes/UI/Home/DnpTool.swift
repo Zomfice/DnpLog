@@ -10,6 +10,7 @@ import UIKit
 @objc public class DnpTool: NSObject {
     @objc public static let shareInstance  = DnpTool()
     private var enterView : DnpToolEnterView!
+    private var hasInstall: Bool = false
     private var startPlugins = [String]()
     /// custom module show
     public var configModule: (() -> [[String:String]] )?
@@ -34,6 +35,10 @@ import UIKit
     }
     
     internal func initEnter() {
+        guard !hasInstall else {
+            return
+        }
+        hasInstall = true
         enterView = DnpToolEnterView()
         enterView.makeKeyAndVisible()
     }

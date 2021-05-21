@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-internal let mmmm: CGFloat = 0.01//注释
 
 internal let screenwidth = UIScreen.main.bounds.width
 internal let screenheight = UIScreen.main.bounds.height
@@ -120,21 +119,6 @@ extension NSObject{
     }
 }
 
-
-// MARK: 几位小数
-extension CGFloat {
-    func format(f: String = ".1") -> String {
-        return String(format: "%\(f)f", self)
-    }
-}
-
-// MARK: 16进制
-extension Int{
-    func hex(f: String = "%02X") -> String {
-        return String(format: "\(f)", self)
-    }
-}
-
 // MARK: 字体估算高度
 extension NSString{
     func calculateSize(limitSize: CGSize,font: UIFont,lineSpace: CGFloat) -> CGSize {
@@ -151,8 +135,6 @@ extension NSString{
     }
 }
 
-
-
 // MARK: TableView`s reuseIdentifier
 protocol ReuseViewProtocol: NSObjectProtocol {
     static var reuseIdentifier: String { get }
@@ -164,11 +146,11 @@ extension UIView: ReuseViewProtocol {
     }
 }
 
-public let ShowNotification = "ShowPluginNotification"
-public let CloseNotification = "ClosePluginNotification"
+internal let ShowNotification = "ShowPluginNotificationName"
+internal let CloseNotification = "ClosePluginNotificationName"
 
 /// Use for Log Notification Name
-public let DnpLogNotification = "DnpLogNotification"
+//internal let DnpLogNotification = "DnpLogNotification"
 /// 快速开启Log
 internal let DnpOpenLogModule = "DnpLogOpenMoudle"
 
@@ -177,6 +159,6 @@ internal let DnpOpenLogModule = "DnpLogOpenMoudle"
  
  NotificationCenter.default.post(name: NSNotification.Name(rawValue: DnpLogNotification), object: nil,userInfo: [DnpLog:[String: Any])
  */
-public let DnpLog = "DnpLog"
+//internal let DnpLog = "DnpLog"
 
 /// exit(0);Kill App

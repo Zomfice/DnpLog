@@ -35,6 +35,23 @@ extension String{
         }
         return [:]
     }
+
+}
+
+extension Data{
+    
+    func dataToString() -> String {
+        let json = try? JSONSerialization.jsonObject(with: self, options: .mutableLeaves)
+        if let m_json = json ,
+           let data = try? JSONSerialization.data(withJSONObject: m_json, options: .prettyPrinted) ,
+           let encodeString = String(data: data, encoding: .utf8) {
+            
+            return encodeString.replacingOccurrences(of: "\\/", with: "/")
+            
+        }
+        return ""
+    }
+    
 }
 
 
@@ -46,10 +63,10 @@ extension Date{
         return time
     }
     /// 当前日期
-    static func currentDate(time: TimeInterval)-> String{
+    static func currentDate(time: TimeInterval,format: String = "HH:mm:ss")-> String{
         let date = Date(timeIntervalSince1970: time)
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
+        formatter.dateFormat = format
         return formatter.string(from: date)
     }
 }
@@ -79,4 +96,48 @@ extension NSObject {
             method_exchangeImplementations(select1Method!, select2Method!)
         }
     }
+}
+
+
+extension UIColor {
+    // MARK颜色转图片
+    var image: UIImage {
+        let rect:CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        
+        UIGraphicsBeginImageContext(rect.size)
+        
+        let context: CGContext = UIGraphicsGetCurrentContext()!
+        
+        context.setFillColor(self.cgColor)
+        
+        context.fill(rect)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsGetCurrentContext()
+        
+        return image!
+    }
+}
+
+
+// MARK: 随机色
+var randomColor: UIColor{
+    get{
+        let red = CGFloat(arc4random()%256)/255.0
+        let green = CGFloat(arc4random()%256)/255.0
+        let blue = CGFloat(arc4random()%256)/255.0
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    }
+}
+
+
+extension Array {
+    func object(_ index: Int) -> Element? {
+        if index >= 0 && index < self.count  {
+            return self[index]
+        }
+        return nil
+    }
+    
 }

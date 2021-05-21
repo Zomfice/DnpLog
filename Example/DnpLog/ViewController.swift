@@ -31,7 +31,8 @@ class ViewController: UIViewController {
         config.isNeedLog = false
         config.isNeedDomainName = false
         config.isNeedServiceResponse = false
-        let path = "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest"
+        //let path = "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest"
+        let path = "http://meizi.leanapp.cn/category/All/page/1"
         ZLNetWork.request(requestType: .get, path: path, parameters: nil, netConfig: config
         , progressBlock: nil, dataTaskBlock: nil, serviceResponse: nil) { (response, error) in
             if let _ = response{

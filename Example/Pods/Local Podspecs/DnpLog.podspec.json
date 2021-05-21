@@ -18,10 +18,12 @@
   "platforms": {
     "ios": "9.0"
   },
+  "swift_versions": "5.0",
   "source_files": "DnpLog/Classes/**/*",
   "resource_bundles": {
     "DnpLog": [
       "DnpLog/Assets/*"
     ]
-  }
+  },
+  "swift_version": "5.0"
 }
