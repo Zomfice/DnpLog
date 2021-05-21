@@ -23,7 +23,9 @@ class DnpLogDetailController: DnpToolBaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.layout()
-        self.showTextviewContent(content: content)
+        DispatchQueue.global().async {
+            self.showTextviewContent(content: self.content)
+        }
         
         let mock = UIBarButtonItem(title: "Mock", style: .plain, target: self, action: #selector(mockAction))
         let copy = UIBarButtonItem(title: "复制", style: .plain, target: self, action: #selector(copyAction))
@@ -64,9 +66,10 @@ class DnpLogDetailController: DnpToolBaseController {
             let range = NSString(string: content).range(of: m_key)
             attribute.addAttributes([NSAttributedString.Key.foregroundColor : keycolor], range: range)
         }
-        self.textView.attributedText = attribute
+        DispatchQueue.main.async {
+            self.textView.attributedText = attribute
+        }
     }
-    //let subStr = (content as NSString).substring(with: textResult)
     
     
     func layout() {
@@ -99,7 +102,10 @@ class DnpLogDetailController: DnpToolBaseController {
     }
     
     @objc func shareAction() {
-        let activity = UIActivityViewController(activityItems: [self.textView.text], applicationActivities: nil)
+        guard let contentText = self.textView.text else {
+            return
+        }
+        let activity = UIActivityViewController(activityItems: [contentText], applicationActivities: nil)
         self.present(activity, animated: true, completion: nil)
     }
     

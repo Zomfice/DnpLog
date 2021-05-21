@@ -34,14 +34,37 @@ class DnpLogDataManager: NSObject {
         self.requests.append(model)
         self.requests_dict[dataTask] = model
         
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            var log = "********************************** API:request **********************************\n\n"
+            log += "\(model.logDataFormat(rheader: false))"
+            log += "🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀\n"
+            print(log)
+        }*/
+        
         NotificationCenter.default.post(name: DnpLogNotificationName, object: model)
         objc_sync_exit(self)
     }
-    
     
     static func removeAll() {
         shared.requests.removeAll()
         shared.requests_dict.removeAll()
         NotificationCenter.default.post(name: DnpLogNotificationName, object: nil)
     }
+    
+    // task数据更新
+    static func requestTaskStatus(model: DnpLogDataModel?) {
+        guard let model = model else {
+            return
+        }
+        NotificationCenter.default.post(name: DnpLogNotificationName, object: model)
+        if DnpLogManager.terminalPrint {
+            DispatchQueue.main.async {
+                var log = "********************************** API:request **********************************\n\n"
+                log += "\(model.logDataFormat(rheader: false))"
+                log += "🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀\n"
+                print(log)
+            }
+        }
+    }
+    
 }

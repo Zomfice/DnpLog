@@ -39,7 +39,7 @@ class DnpLogListController: DnpToolBaseController {
     }
     
     @objc func reload(sender: Notification){
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.tableView.reloadData()
         }
     }

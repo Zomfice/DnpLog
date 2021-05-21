@@ -106,6 +106,7 @@ class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegat
         }
         model?.originalData = newData as Data
         
+        DnpLogDataManager.requestTaskStatus(model: model)
         self.client?.urlProtocol(self, didLoad: data)
         
     }

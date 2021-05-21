@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         self.request(path: "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest")
         self.request(path: "http://meizi.leanapp.cn/category/All/page/1")
         self.request(path: "https://www.baidu.com/")
-        self.netForURLConnection()
+        //self.netForURLConnection()
     }
     
     func netForURLConnection() {
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue()) { (response:URLResponse?, data:Data?, error:Error?) in
             if error == nil {
                 let result: String = String(data: data!, encoding: String.Encoding.utf8)!
-                //print("请求成功 = \(result)")
+                print("请求成功 = \(result)")
             }else{
                 print("请求失败 error = \(error.debugDescription)")
             }

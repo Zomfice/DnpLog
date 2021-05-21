@@ -20,7 +20,7 @@ class DnpLogDataModel: NSObject {
             if task?.error != nil  {
                 return "❌  "
             }else{
-                return "✅ "//"⚠️"
+                return "⚠️"
             }
         }else{
             return "✅ "
@@ -99,8 +99,9 @@ extension DnpLogDataModel {
     func originalResponse() -> String {
         var p_response = "{\n\n}"
         if let originData = self.originalData{
-            if originData.dataToString().count > 0 {
-                p_response = originData.dataToString()
+            let dataString = originData.dataToString()
+            if dataString.count > 0 {
+                p_response = dataString
             }else if let string = String(data: originData, encoding: .utf8){
                 p_response = "{\n\(string)\n}"
             }
@@ -124,7 +125,7 @@ extension DnpLogDataModel {
         return p_error
     }
     
-    func logDataFormat() -> String {
+    func logDataFormat(rheader: Bool = true) -> String {
         let p_url = requestURL()
         let p_method = requestMethod()
         let p_header = requestHeader()
@@ -166,10 +167,12 @@ extension DnpLogDataModel {
             netLog.append("\n\n")
         }
         
-        netLog.append("\n\n")
-        netLog.append("ResponseHeader: ")
-        netLog.append(p_response_header)
-        netLog.append("\n\n")
+        if rheader {
+            netLog.append("\n\n")
+            netLog.append("ResponseHeader: ")
+            netLog.append(p_response_header)
+            netLog.append("\n\n")
+        }
         
         return netLog
     }
