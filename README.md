@@ -5,24 +5,49 @@
 [![License](https://img.shields.io/cocoapods/l/DnpLog.svg?style=flat)](https://cocoapods.org/pods/DnpLog)
 [![Platform](https://img.shields.io/cocoapods/p/DnpLog.svg?style=flat)](https://cocoapods.org/pods/DnpLog)
 
-## Example
+## Description
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+拦截网络请求，并将请求日志显示在列表和终端输出，查看接口的详细的请求信息，便于接口调试和日志查看
 
-## Requirements
+## Getting Started
 
-## Installation
-
-DnpLog is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Install
 
 ```ruby
 pod 'DnpLog'
 ```
+### How-to
+
+是否开启终端日志输出
+
+```
+DnpLogManager.terminalPrint = true
+```
+
+拦截所有网络请求，并将日志输出
+
+```
+DnpLogManager.startMonitor()
+```
+
+添加域名或者请求白名单, 只拦截白名单接口请求
+
+```
+DnpLogManager.startMonitor {
+    [
+        "https://www.baidu.com/"
+    ]
+}
+```
+
+### Example 
+
+
+
 
 ## Author
 
-Zomfice, Zomfice@163.com
+Zomfice@gmail.com
 
 ## License
 

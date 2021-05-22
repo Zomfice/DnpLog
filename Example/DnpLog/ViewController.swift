@@ -33,7 +33,8 @@ class ViewController: UIViewController {
         // success data
         self.request(path: "http://baobab.kaiyanapp.com/api/v3/discovery")
         // error data
-        self.request(path: "http://baobab.wandoujia.com/api/v1/feed?vc=67&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&v=4.1.0&f=iphone")
+        self.request2(path: "http://baobab.wandoujia.com/api/v1/feed?vc=67&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&v=4.1.0&f=iphone")
+        //self.request(path: "http://baobab.wandoujia.com/api/v1/feed?vc=67&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&v=4.1.0&f=iphone")
         // html data
         self.request(path: "http://meizi.leanapp.cn/category/All/page/1")
         // html data
@@ -47,8 +48,6 @@ class ViewController: UIViewController {
         session.requestSerializer = AFHTTPRequestSerializer()
         session.responseSerializer = AFHTTPResponseSerializer()
         session.requestSerializer.timeoutInterval = 10;
-        let acceptSet: Set<String> = ["application/json","text/plain","text/javascript","text/json","text/html","text/json"]
-        session.responseSerializer.acceptableContentTypes = acceptSet
         session.get(path, parameters: nil, headers: nil, progress: nil) { (task, response) in
             if let _ = response as? [String: Any] {
                 //print(dict)
