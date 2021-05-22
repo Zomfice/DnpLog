@@ -42,8 +42,11 @@ DnpLogManager.startMonitor {
 
 ### Example 
 
+![](https://github.com/Zomfice/DnpLog/blob/master/Resource/20210522-111820%402x.png)
 
+![](https://github.com/Zomfice/DnpLog/blob/master/Resource/Simulator%20Screen%20Shot1.png)
 
+![](https://github.com/Zomfice/DnpLog/blob/master/Resource/Simulator%20Screen%20Shot2.png)
 
 ## Author
 
