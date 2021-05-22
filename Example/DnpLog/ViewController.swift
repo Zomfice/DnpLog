@@ -18,10 +18,15 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.request(path: "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest")
-        self.request(path: "http://meizi.leanapp.cn/category/All/page/1")
-        self.request(path: "https://www.baidu.com/")
+        //self.request(path: "http://baobab.kaiyanapp.com/api/v3/discovery")
+        //self.request(path: "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest")
+        //self.request(path: "http://meizi.leanapp.cn/category/All/page/1")
+        //self.request(path: "http://baobab.wandoujia.com/api/v1/feed?vc=67&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&v=4.1.0&f=iphone")
+        //self.request(path: "https://www.baidu.com/")
         //self.netForURLConnection()
+        
+        self.request2(path: "http://baobab.kaiyanapp.com/api/v3/discovery")
+        self.request2(path: "http://baobab.wandoujia.com/api/v1/feed?vc=67&u=011f2924aa2cf27aa5dc8066c041fe08116a9a0c&v=4.1.0&f=iphone")
     }
     
     func netForURLConnection() {
@@ -42,8 +47,6 @@ class ViewController: UIViewController {
         config.isNeedLog = false
         config.isNeedDomainName = false
         config.isNeedServiceResponse = false
-        //let path = "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest"
-        // let path = "http://meizi.leanapp.cn/category/All/page/1"
         ZLNetWork.request(requestType: .get, path: path, parameters: nil, netConfig: config
         , progressBlock: nil, dataTaskBlock: nil, serviceResponse: nil) { (response, error) in
             if let _ = response{
@@ -52,7 +55,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func request2() {
+    func request2(path: String) {
         let session = AFHTTPSessionManager()
         session.requestSerializer = AFHTTPRequestSerializer()
         session.responseSerializer = AFHTTPResponseSerializer()
@@ -60,16 +63,14 @@ class ViewController: UIViewController {
         session.requestSerializer.timeoutInterval = 10;
         let acceptSet: Set<String> = ["application/json","text/plain","text/javascript","text/json","text/html","text/json"]
         session.responseSerializer.acceptableContentTypes = acceptSet
-        let urlpath = "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest"
-        session.get(urlpath, parameters: nil, progress: nil) { (task, response) in
+        //let urlpath = "https://unsplash.com/napi/photos?page=0&per_page=2&order_by=latest"
+        session.get(path, parameters: nil, progress: nil) { (task, response) in
             if let dict = response as? [String: Any] {
                 //print(dict)
-            }else{
-                print("无")
             }
 
         } failure: { (_, error) in
-            print("failure")
+            //print("\(error)")
         }
 
     }

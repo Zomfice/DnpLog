@@ -34,13 +34,6 @@ class DnpLogDataManager: NSObject {
         self.requests.append(model)
         self.requests_dict[dataTask] = model
         
-        /*DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            var log = "********************************** API:request **********************************\n\n"
-            log += "\(model.logDataFormat(rheader: false))"
-            log += "🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀\n"
-            print(log)
-        }*/
-        
         NotificationCenter.default.post(name: DnpLogNotificationName, object: model)
         objc_sync_exit(self)
     }
@@ -58,8 +51,8 @@ class DnpLogDataManager: NSObject {
         }
         NotificationCenter.default.post(name: DnpLogNotificationName, object: model)
         if DnpLogManager.terminalPrint {
-            DispatchQueue.main.async {
-                var log = "********************************** API:request **********************************\n\n"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                var log = "\n********************************** API:request **********************************\n\n"
                 log += "\(model.logDataFormat(rheader: false))"
                 log += "🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀🍀\n"
                 print(log)

@@ -72,14 +72,6 @@ class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegat
         self.dataTask?.cancel()
         self.dataTask = nil
     }
-    
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        if let e = error {
-            self.client?.urlProtocol(self, didFailWithError: e)
-        }else{
-            self.client?.urlProtocolDidFinishLoading(self)
-        }
-    }
 
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
         if response.isKind(of: HTTPURLResponse.self),
@@ -96,8 +88,19 @@ class DnpURLProtocol: URLProtocol, URLSessionDataDelegate, URLSessionTaskDelegat
         completionHandler(.allow)
     }
 
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if let e = error {
+            if let dataTask = task as? URLSessionDataTask {
+                let model = DnpLogDataManager.shared.requests_dict[dataTask]
+                DnpLogDataManager.requestTaskStatus(model: model)
+            }
+            self.client?.urlProtocol(self, didFailWithError: e)
+        }else{
+            self.client?.urlProtocolDidFinishLoading(self)
+        }
+    }
+    
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-
         let model = DnpLogDataManager.shared.requests_dict[dataTask]
         var newData = NSMutableData(data: data)
         if let origindata = model?.originalData {
