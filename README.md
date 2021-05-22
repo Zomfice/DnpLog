@@ -42,9 +42,13 @@ DnpLogManager.startMonitor {
 
 ### Example 
 
+终端日志输出
+
 <img src="https://github.com/Zomfice/DnpLog/blob/master/Resource/20210522-111820%402x.png" width="50%" height="50%">
 
 </br>
+
+面板列表日志输出
 
 <img src="https://github.com/Zomfice/DnpLog/blob/master/Resource/Simulator%20Screen%20Shot1.png" width="30%" height="30%">
 
