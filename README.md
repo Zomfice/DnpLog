@@ -42,11 +42,11 @@ DnpLogManager.startMonitor {
 
 ### Example 
 
-![](https://github.com/Zomfice/DnpLog/blob/master/Resource/20210522-111820%402x.png)
+<div align=center><img width="150" height="150" src="https://github.com/Zomfice/DnpLog/blob/master/Resource/20210522-111820%402x.png"/></div>
 
-![](https://github.com/Zomfice/DnpLog/blob/master/Resource/Simulator%20Screen%20Shot1.png)
+<div align=center><img width="150" height="150" src="https://github.com/Zomfice/DnpLog/blob/master/Resource/Simulator%20Screen%20Shot1.png"/></div>
 
-![](https://github.com/Zomfice/DnpLog/blob/master/Resource/Simulator%20Screen%20Shot2.png)
+<div align=center><img width="150" height="150" src="https://github.com/Zomfice/DnpLog/blob/master/Resource/Simulator%20Screen%20Shot2.png"/></div>
 
 ## Author
 
