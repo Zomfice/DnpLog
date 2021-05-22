@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ]
         }*/
         
-        //TBURLProtocol.startMonitor()
         return true
     }
 
